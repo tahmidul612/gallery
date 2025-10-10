@@ -24,7 +24,7 @@ const Footer = () => {
             { title: "Home", href: "/" },
             { title: "Travel", href: "/travel" },
             { title: "Discover", href: "/discover" },
-            { title: "Blog", href: "/blog" },
+            // { title: "Blog", href: "/blog" },
             { title: "About", href: "/about" },
           ]}
         />
