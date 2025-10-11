@@ -29,5 +29,10 @@ export default function cloudflareLoader({
     imageSrc = 'https://' + src;
   }
 
-  return `/img/${paramsString}/${imageSrc}`;
+  const searchParams = new URLSearchParams({
+    params: paramsString,
+    url: imageSrc,
+  });
+
+  return `/img?${searchParams.toString()}`;
 }

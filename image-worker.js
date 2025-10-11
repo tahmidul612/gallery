@@ -6,19 +6,17 @@ async function handleRequest(request) {
   const url = new URL(request.url)
   const path = url.pathname
 
-  if (!path.startsWith('/img/')) {
+  if (path !== '/img') {
     return new Response('Not found', { status: 404 })
   }
 
-  // Find the start of the image URL (which should be https://)
-  const imageUrlStartIndex = path.indexOf('https://')
-  if (imageUrlStartIndex === -1) {
-    return new Response('Invalid image URL', { status: 400 })
-  }
+  const searchParams = url.searchParams;
+  const params = searchParams.get('params');
+  const imageUrl = searchParams.get('url');
 
-  // Extract params and image URL
-  const params = path.substring(5, imageUrlStartIndex - 1) // from after /img/ to before /https://
-  const imageUrl = path.substring(imageUrlStartIndex)
+  if (!params || !imageUrl) {
+    return new Response('Missing params or url', { status: 400 });
+  }
 
   const cfUrl = `https://gallery.tahmidul612.com/cdn-cgi/image/${params}/${imageUrl}`
 
