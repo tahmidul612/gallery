@@ -31,7 +31,7 @@ export default function cloudflareLoader({
 
   const searchParams = new URLSearchParams({
     params: paramsString,
-    url: imageSrc,
+    url_b64: btoa(imageSrc),
   });
 
   return `/img?${searchParams.toString()}`;
