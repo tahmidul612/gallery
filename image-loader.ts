@@ -34,5 +34,5 @@ export default function cloudflareLoader({
     url_b64: btoa(imageSrc),
   });
 
-  return `/img?${searchParams.toString()}`;
+  return `https://gallery-tranformation.tahmidul612.workers.dev/?${searchParams.toString()}`;
 }
